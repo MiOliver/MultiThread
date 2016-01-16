@@ -1,0 +1,12 @@
+#log
+.idea/
+
+logs/
+
+target/
+
+out/production/MultiThreads
+
+.gitignore
+
+CounterWebApp.iml
