@@ -12,7 +12,7 @@ public class Factory {
     }
     public String takeOne(){
         synchronized (this){
-            if(index==0){
+            if(index==-1){
                 try {
                     wait();
                 } catch (InterruptedException e) {
@@ -25,6 +25,7 @@ public class Factory {
                     result=content[index];
                     content[index]="";
                     index--;
+                    System.out.println("get-->"+ result);
                     return result;
                 }
             }
@@ -42,8 +43,12 @@ public class Factory {
                 }
             }else{
                 notifyAll();
-                index++;
-                content[index]=item;
+                if((++index)<=9){
+                    content[index]=item;
+                    System.out.println("put-->"+ item);
+                }else{
+                    index=9;
+                }
             }
         }
     }
