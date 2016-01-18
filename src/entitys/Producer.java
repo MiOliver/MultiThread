@@ -14,6 +14,7 @@ public class Producer extends Thread {
     @Override
     public void run() {
         while (true){
+            System.out.println("Producer -->"+"run");
             String goods=getRandomNum();
             factory.putOne(goods);
 //            System.out.println(this.getName()+this.getId()+"--> produce "+ goods);

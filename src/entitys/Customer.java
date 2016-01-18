@@ -14,6 +14,7 @@ public class Customer implements Runnable{
     @Override
     public void run() {
         while (true){
+            System.out.println("customer -->"+"run");
             String goods=factory.takeOne();
 //            System.out.println("get-->"+ goods);
         }
