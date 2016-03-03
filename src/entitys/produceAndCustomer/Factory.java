@@ -1,4 +1,4 @@
-package entitys;
+package entitys.produceAndCustomer;
 
 /**
  * Created by ning on 1/14/16.

@@ -1,0 +1,5 @@
+这些是Java NIO中最重要的通道的实现：
+FileChannel
+DatagramChannel
+SocketChannel
+ServerSocketChannel

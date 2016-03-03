@@ -1,4 +1,4 @@
-package entitys;
+package entitys.produceAndCustomer;
 
 import java.util.Random;
 

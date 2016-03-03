@@ -1,5 +1,10 @@
 import entitys.*;
+import entitys.produceAndCustomer.Customer;
+import entitys.produceAndCustomer.Factory;
+import entitys.produceAndCustomer.Producer;
 import threadpool.PoolTest;
+import utils.CommonUtils;
+import utils.EnumTest;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,8 +16,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Main{
 
-    public static void main01(String args[]){
+    public static void main(String args[]){
         System.out.println("i am born!");
+        CommonUtils.getProcessId();
         Factory factory = new Factory();
         Producer producer= new Producer(factory);
         Thread customer=new Thread(new Customer(factory));
@@ -25,6 +31,8 @@ public class Main{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("exit!");
 
     }
 
@@ -47,10 +55,13 @@ public class Main{
         //关闭线程池
         service.shutdown();
     }
-    public static void main(String args[]){
+    public static void main03(String args[]){
         PoolTest test=new PoolTest();
-//        test.testCachedThreadPool();
-//        test.testSingleThreadExecutor();
-         test.testFixedThreadPool();
+        test.testCachedThreadPool();
+        test.testSingleThreadExecutor();
+        test.testFixedThreadPool();
+
+        System.out.println("value "+EnumTest.Week.MONDAY.getValue());
+        EnumTest.Week.MONDAY.getValue();
     }
 }
