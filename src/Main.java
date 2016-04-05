@@ -4,8 +4,10 @@ import entitys.produceAndCustomer.Factory;
 import entitys.produceAndCustomer.Producer;
 import threadpool.PoolTest;
 import utils.CommonUtils;
+import utils.DateUtil;
 import utils.EnumTest;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
@@ -17,6 +19,10 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main{
 
     public static void main(String args[]){
+        test();
+    }
+
+    public static void testThread(){
         System.out.println("i am born!");
         CommonUtils.getProcessId();
         Factory factory = new Factory();
@@ -33,7 +39,6 @@ public class Main{
         }
 
         System.out.println("exit!");
-
     }
 
     public static void main02(String args[]){
@@ -55,13 +60,17 @@ public class Main{
         //关闭线程池
         service.shutdown();
     }
-    public static void main03(String args[]){
-        PoolTest test=new PoolTest();
-        test.testCachedThreadPool();
-        test.testSingleThreadExecutor();
-        test.testFixedThreadPool();
+    public static void test(){
+        System.out.println("当前时间："+DateUtil.date2str("yyyy-mm-dd hh:MM:ss"));
+        System.out.println("time is :"+DateUtil.dateToTimestamp(DateUtil.strToDate("2016-04-6 23:59:58")));
+        System.out.println("time is :"+DateUtil.dateToTimestamp(DateUtil.strToDate("2016-04-6 23:59:59")));
+        System.out.println("time check:"+DateUtil.strToDate("2016-04-06 23:59:58").before(DateUtil.strToDate("2016-04-6 23:59:59")));
+//        PoolTest test=new PoolTest();
+//        test.testCachedThreadPool();
+//        test.testSingleThreadExecutor();
+//        test.testFixedThreadPool();
 
-        System.out.println("value "+EnumTest.Week.MONDAY.getValue());
-        EnumTest.Week.MONDAY.getValue();
+//        System.out.println("value "+EnumTest.Week.MONDAY.getValue());
+//        EnumTest.Week.MONDAY.getValue();
     }
 }

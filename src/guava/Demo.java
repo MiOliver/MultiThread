@@ -113,12 +113,12 @@ public class Demo {
 
     public static void function() {
         ImmutableMap<String,Double> eurPriceMap =ImmutableMap.of();
-        Map usdPriceMap = Maps.transformValues(eurPriceMap, new Function() {
+       /* Map usdPriceMap = Maps.transformValues(eurPriceMap, new Function() {
             double eurToUsd = 1.4888;
             public Double apply(final Double from) {
                 return from * eurToUsd;
             }
-        });
+        });*/
         System.out.println("test");
     }
 
