@@ -7,7 +7,10 @@ import com.oliver.entitys.produceAndCustomer.Factory;
 import com.oliver.entitys.produceAndCustomer.Producer;
 import com.oliver.utils.CommonUtils;
 import com.oliver.utils.DateUtil;
+import com.oliver.utils.EnumTest;
 
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
@@ -18,8 +21,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Main{
 
+    private static final int MAX_SIZE = 9999999;
     public static void main(String args[]){
-        test();
+        testDate();
     }
 
     public static void testThread(){
@@ -65,12 +69,51 @@ public class Main{
         System.out.println("time is :"+DateUtil.dateToTimestamp(DateUtil.strToDate("2016-04-6 23:59:58")));
         System.out.println("time is :"+DateUtil.dateToTimestamp(DateUtil.strToDate("2016-04-6 23:59:59")));
         System.out.println("time check:"+DateUtil.strToDate("2016-04-06 23:59:58").before(DateUtil.strToDate("2016-04-6 23:59:59")));
-//        PoolTest test=new PoolTest();
-//        test.testCachedThreadPool();
-//        test.testSingleThreadExecutor();
-//        test.testFixedThreadPool();
-
-//        System.out.println("value "+EnumTest.Week.MONDAY.getValue());
-//        EnumTest.Week.MONDAY.getValue();
+        System.out.println("value "+ EnumTest.Week.MonDay.getDesc());
     }
+
+    public static void test01(){
+        String dateStr= (DateUtil.dateToInt(new Date()))+"";
+        int random= getRandomInt(10000);
+        System.out.println(fillStr(random));
+        System.out.println(dateStr+fillStr(random));
+    }
+
+    private static String fillStr(Integer value){
+        String mkup_zero = ((MAX_SIZE+1)+"").substring(1);
+        String new_value = mkup_zero+value;
+        new_value=new_value.substring(new_value.length()-(MAX_SIZE+"").length(), new_value.length());
+        return new_value;
+    }
+
+
+    private static int getRandomInt(int range){
+        Random random = new Random(System.currentTimeMillis());
+        return random.nextInt(range);
+    }
+
+    private static void testString(){
+        BigDecimal test=new BigDecimal(100.34);
+        System.out.println("test String :"+test.setScale(1,BigDecimal.ROUND_HALF_EVEN).doubleValue());
+    }
+
+    private static void testDate(){
+        Date date=new Date(2016-1900,4,14);
+        System.out.println("test date :"+date);
+        System.out.println("test date :"+new Date(2016-1900,5,9));
+    }
+
+    private static void testHashMap(){
+        Map<String,String> resultMap = new HashMap<String,String>();
+        resultMap.put("test","001");
+        resultMap.put("test","002");
+        Set<String> keys=resultMap.keySet();
+        for(String key:keys){
+            System.out.println("key:"+resultMap.get(key));
+        }
+
+    }
+
+
+
 }
