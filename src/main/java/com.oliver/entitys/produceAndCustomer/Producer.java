@@ -1,5 +1,8 @@
 package com.oliver.entitys.produceAndCustomer;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -25,5 +28,22 @@ public class Producer extends Thread {
         Random random=new Random();
         int num=random.nextInt(20);
         return "goods"+num;
+    }
+
+    public void testMap() {
+        Map<String, Date> map=getLimitedTime();
+        if(map==null){
+            System.out.println("map is null");
+        }
+    }
+
+    public Map<String,Date> getLimitedTime(){
+        Map<String,Date> map=new HashMap<String, Date>();
+        String goodsIdList="1110,1200";
+        String[] goodslist=goodsIdList.split(",");
+        for(String goods:goodslist){
+            map.put(goods,new Date());
+        }
+        return map;
     }
 }

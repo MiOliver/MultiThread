@@ -42,7 +42,19 @@ public class EnumTest {
 
     }
 
+    public enum OrderOperaterType {
+        CREATE,
+        QUERY,
+        QUERYLIST,
+        RETURN,
+        EXCHANGE,
+        CHANGEIMEI,
+        BROTHERS,
+        INVOICE,
+        COUPON,
+        GETINSURANCE,
+        GOODISINSTOCK;
 
-
+    }
 
 }

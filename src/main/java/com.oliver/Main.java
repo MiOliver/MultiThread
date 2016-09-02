@@ -5,10 +5,14 @@ import com.oliver.entitys.User;
 import com.oliver.entitys.produceAndCustomer.Customer;
 import com.oliver.entitys.produceAndCustomer.Factory;
 import com.oliver.entitys.produceAndCustomer.Producer;
+import com.oliver.test.CalendarTest;
+import com.oliver.test.CollectionTest;
 import com.oliver.utils.CommonUtils;
 import com.oliver.utils.DateUtil;
 import com.oliver.utils.EnumTest;
+import com.sun.tools.javac.util.Assert;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -22,8 +26,13 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Main{
 
     private static final int MAX_SIZE = 9999999;
+    public static String ips="10.100.*.* ,10.208.*.*,10.248.*.*,10.234.*.*,10.237.*.*,10.201.*.*,223.202.34.*,223.202.68.*,223.202.36.*,10.236.*,10.108.39.*,10.108.66.*,10.108.70.*,10.108.69.*,10.108.68.*,10.64.*.*,10.235.120.*,10.245.*.*,10.112.*.*";
     public static void main(String args[]){
-        testDate();
+        CollectionTest test=new CollectionTest();
+        test.testList();
+        test.testLinkedList();
+//        test.testHashSet();
+//        test.testTreeSetList();
     }
 
     public static void testThread(){
@@ -113,6 +122,92 @@ public class Main{
         }
 
     }
+
+
+    private static void testList(){
+        List<String> orderList=new ArrayList<String>(
+        );
+        orderList.add("test");
+        orderList.add("te");
+        orderList.add("t1");
+        Iterator<String> iterator=orderList.iterator();
+        for(String item:orderList){
+            System.out.println(item);
+        }
+        while (iterator.hasNext()){
+            String item=iterator.next();
+            if(item.contains("tes")){
+                iterator.remove();
+            }
+        }
+
+        for(String item:orderList){
+            System.out.println(item);
+        }
+
+    }
+
+    private static void testList01(){
+        List<String> orderList=new ArrayList<String>(
+        );
+        orderList.add("test");
+        orderList.add("t1");
+
+        if(orderList.contains("te")){
+            System.out.println("contain");
+        }else{
+            System.out.println("nocontain");
+        }
+
+    }
+
+    private static void testip(){
+        try{
+           boolean f= filterIp("10.64.0.47",ips);
+            System.out.println("result="+f);
+        }catch(Exception e){
+
+        }
+
+
+    }
+
+    public static boolean filterIp(String ip,String ipReg) throws Exception{
+        boolean flag = false;
+        String[] ipRegs = ipReg==null?null:ipReg.split(",");
+        for(String tmpIp : ipRegs){
+            if(ip.matches(tmpIp.trim()) || ip.matches("127.0.0.1")){
+                flag = true ;
+            }
+        }
+        if(!flag){
+            throw new Exception("请选择授权wifi进行交易"+";Ip is:"+ip);
+        }
+        return flag;
+    }
+    public  static void testMap() {
+        Map<String, Date> map=getLimitedTime();
+        if(map==null){
+            System.out.println("map is null");
+        }
+    }
+
+    public static Map<String,Date> getLimitedTime(){
+        Map<String,Date> map=new HashMap<String, Date>();
+            String goodsIdList="1110,1200";
+            String[] goodslist=goodsIdList.split(",");
+            for(String goods:goodslist){
+                map.put(goods,new Date());
+            }
+        return map;
+    }
+
+    private static void testenum(){
+
+        System.out.println("enum:"+EnumTest.OrderOperaterType.QUERY);
+        System.out.println("enum:"+EnumTest.OrderOperaterType.CREATE);
+    }
+
 
 
 
