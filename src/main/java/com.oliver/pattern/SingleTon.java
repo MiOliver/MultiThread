@@ -1,4 +1,4 @@
-package com.oliver.pattern.entity;
+package com.oliver.pattern;
 
 /**
  * 单例模式
