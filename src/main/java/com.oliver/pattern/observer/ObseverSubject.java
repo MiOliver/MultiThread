@@ -1,12 +1,12 @@
-package com.oliver.pattern;
+package com.oliver.pattern.observer;
 
 import com.google.common.collect.Lists;
-import com.oliver.pattern.Interface.Obsever;
 
 import java.util.List;
 import java.util.Random;
 
 /**
+ * 被观察者实体类
  * Created by ning on 9/6/16.
  */
 public class ObseverSubject {

@@ -1,4 +1,4 @@
-package com.oliver.pattern.entity;
+package com.oliver.pattern.adapter;
 
 /**
  * Created by ning on 9/5/16.

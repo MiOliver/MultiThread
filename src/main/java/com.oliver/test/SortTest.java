@@ -9,9 +9,15 @@ public class SortTest {
 
     public static void main(String[] args){
         Integer[] array={12,4,5,32,123,64,4,75,85,53,7,43,8,48,87};
-        SortUtils.insertSort(array);
-        System.out.println("*****************");
-        SortUtils.shellSort(array);
+//        SortUtils.insertSort(array);
+//        System.out.println("******shell***********");
+//        SortUtils.shellSort(array);
+
+//        System.out.println("******select***********");
+//        SortUtils.selectSort(array);
+
+        System.out.println("******quick sqrt()***********");
+        SortUtils.selectSort(array);
 
     }
 

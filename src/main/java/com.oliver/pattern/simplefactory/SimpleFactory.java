@@ -1,4 +1,4 @@
-package com.oliver.pattern;
+package com.oliver.pattern.simplefactory;
 
 import com.oliver.pattern.entity.AbstractChart;
 import com.oliver.pattern.entity.LineChart;

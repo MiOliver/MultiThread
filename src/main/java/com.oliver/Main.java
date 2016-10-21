@@ -2,17 +2,13 @@ package com.oliver;
 
 import com.oliver.entitys.MyCount;
 import com.oliver.entitys.User;
-import com.oliver.entitys.produceAndCustomer.Customer;
-import com.oliver.entitys.produceAndCustomer.Factory;
-import com.oliver.entitys.produceAndCustomer.Producer;
-import com.oliver.test.CalendarTest;
+import com.oliver.produceAndCustomer.Customer;
+import com.oliver.produceAndCustomer.Factory;
+import com.oliver.produceAndCustomer.Producer;
 import com.oliver.test.CollectionTest;
-import com.oliver.utils.CommonUtils;
 import com.oliver.utils.DateUtil;
 import com.oliver.utils.EnumTest;
-import com.sun.tools.javac.util.Assert;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -33,26 +29,13 @@ public class Main{
         test.testLinkedList();
 //        test.testHashSet();
 //        test.testTreeSetList();
+        System.out.println("ret is :"+testFinally());
+        System.out.println("hash code is "+test.hashCode());
+
+
     }
 
-    public static void testThread(){
-        System.out.println("i am born!");
-        CommonUtils.getProcessId();
-        Factory factory = new Factory();
-        Producer producer= new Producer(factory);
-        Thread customer=new Thread(new Customer(factory));
-        producer.setPriority(6);
-        customer.setPriority(7);
-        producer.start();
-        customer.start();
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        System.out.println("exit!");
-    }
 
     public static void main02(String args[]){
         System.out.println("i am born!");
@@ -203,12 +186,24 @@ public class Main{
     }
 
     private static void testenum(){
-
         System.out.println("enum:"+EnumTest.OrderOperaterType.QUERY);
         System.out.println("enum:"+EnumTest.OrderOperaterType.CREATE);
     }
 
 
+    private static int testFinally(){
+        int ret = 0;
+        try{
+            throw new Exception();
+        }
+        catch(Exception e){
+            ret = 1;
+            return ret;
+        }
+        finally{
+            ret = 2;
+        }
+    }
 
 
 }

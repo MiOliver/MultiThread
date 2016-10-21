@@ -1,4 +1,4 @@
-package com.oliver.pattern.Interface;
+package com.oliver.pattern.observer;
 
 /**
  * 观察者类

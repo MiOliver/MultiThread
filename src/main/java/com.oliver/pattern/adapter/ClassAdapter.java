@@ -1,7 +1,4 @@
-package com.oliver.pattern;
-
-import com.oliver.pattern.Interface.TargetInterface;
-import com.oliver.pattern.entity.Adaptee;
+package com.oliver.pattern.adapter;
 
 /**
  * 类适配器模式

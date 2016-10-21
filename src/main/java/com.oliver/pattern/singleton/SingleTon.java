@@ -1,4 +1,4 @@
-package com.oliver.pattern;
+package com.oliver.pattern.singleton;
 
 /**
  * 单例模式

@@ -1,6 +1,7 @@
 package com.oliver.test;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by ning on 9/2/16.
@@ -10,6 +11,8 @@ public class CollectionTest {
     /** List */
     private List<Integer> arrayList=new ArrayList<Integer>();
     private List<Character> linkList=new LinkedList<Character>();
+
+    private List<Character> copyList=new CopyOnWriteArrayList<Character>();
 
     /** set */
     private Set<Integer> hashSet=new HashSet<Integer>();
@@ -21,6 +24,11 @@ public class CollectionTest {
     /** Map */
     private Map<String,Integer> hashmap=new HashMap<String, Integer>();
     private Map<String,Integer> treeMap=new TreeMap<String, Integer>();
+
+    private Map<String,Integer> linkdedHash=new LinkedHashMap<String, Integer>();
+
+    private StringBuilder stringBuilder;
+    private StringBuffer stringBuffer;
 
     public void testList(){
         Random randomInt=new Random();
@@ -78,10 +86,67 @@ public class CollectionTest {
             Object item=iterator.next();
             System.out.println("type:"+ item.getClass());
             System.out.println("item:"+ item);
-            System.out.println("item:"+ iterator.next());
         }
         String test="dfjdk";
 
+    }
+
+    public void iteratorShowMap (Map map){
+        Iterator<Map.Entry> iterator=map.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry=iterator.next();
+            System.out.println("key:"+entry.getKey());
+            System.out.println("value:"+ entry.getValue());
+        }
+
+        System.out.println("----------------------------------");
+
+    }
+
+    /**
+     * 测试linkedHashMap  insert 顺序
+     */
+    public void testLink(){
+        Map<String,Integer> linkdedHash=new LinkedHashMap<String, Integer>();
+        linkdedHash.put("apple",10);
+        linkdedHash.put("mi",100);
+        linkdedHash.put("HW",13);
+        linkdedHash.put("Lenovo",16);
+        linkdedHash.put("apple",10);
+
+        linkdedHash.get("Lenovo");
+        linkdedHash.get("mi");
+
+        iteratorShowMap(linkdedHash);
+    }
+
+    /**
+     * 测试linkedHashMap  lru 顺序
+     */
+    public void testLinklru(){
+
+        Map<String,Integer> linkdedHash=new LinkedHashMap<String, Integer>(20,0.7f,true);
+        System.out.println(linkdedHash.size());
+        linkdedHash.put("apple",10);
+        linkdedHash.put("mi",100);
+        linkdedHash.put("HW",13);
+        linkdedHash.put("Lenovo",16);
+
+        iteratorShowMap(linkdedHash);
+        linkdedHash.get("Lenovo");
+        linkdedHash.get("mi");
+
+        iteratorShowMap(linkdedHash);
+    }
+
+    /**
+     * test hashmap  null key
+     */
+    public void testHashMapNullKey(){
+        hashmap.put(null,0);
+        Integer pre= hashmap.put(null,1);
+        System.out.println("value is "+pre);
+        System.out.println("value is ");
     }
 
 }
