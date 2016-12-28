@@ -61,6 +61,8 @@ public class Test {
 
         System.out.println("静态成员内部类访问："+ staicInner);
 
+        System.out.println("<<"+(1L<<5));
+
     }
 
     public int add(int value){
