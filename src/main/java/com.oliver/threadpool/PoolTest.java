@@ -6,6 +6,7 @@ import com.oliver.entitys.MyTask;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
 
 /**
  * Created by ning on 16-1-17.
@@ -43,6 +44,21 @@ public class PoolTest {
 
         }
         service.shutdown();
+    }
+
+    public void testEnum(){
+        System.out.println("testenum");
+        Lock lock= LockSupport.INSTANCE.getLock("test");
+        lock.lock();
+
+        lock.unlock();
+    }
+
+    public static void  main(String[] args){
+        PoolTest test=new PoolTest();
+        for(int i=0;i<3;i++){
+            test.testEnum();
+        }
     }
 
 }
